@@ -14,8 +14,7 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
   double pizzaPrice4 = 0;
   double pizzaPrice5 = 0;
   double pizzaPrice6 = 0;
-  double pizzaPrice7 = 5;
-
+  double fialPrizza = 5.0;
 
   int number = 1;
   double totalPrice = 5.0;
@@ -25,7 +24,7 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
                 clipBehavior: Clip.antiAlias,
@@ -43,6 +42,10 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                   'بيتزا بالخضار ',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
+
+
+
+
               ),
               Padding(
                 padding: const EdgeInsets.all(5.0),
@@ -70,8 +73,12 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                             icon: Icon(Icons.remove, color: Colors.blue),
                             onPressed: () {
                               setState(() {
-                                if (number > 0) {
+                                if (number > 0
+
+                                ) {
                                   number--;
+                                  fialPrizza -= 5;
+
                                   calculateTotalPrice();
                                 }
                               });
@@ -83,6 +90,7 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                             onPressed: () {
                               setState(() {
                                 number++;
+                                fialPrizza += 5;
                                 calculateTotalPrice();
                               });
                             },
@@ -106,7 +114,7 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                     child: Text(
                       'اختر حجم البيتزا:',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     )),
               ),
               Padding(
@@ -130,11 +138,13 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                         setState(() {
                           if (newValue!) {
                             pizzaPrice = 10.0;
-                            totalPrice+=10.0;
+                            totalPrice += 10.0;
+                            fialPrizza += 10;
                             log('message ${pizzaPrice}');
                           } else {
                             pizzaPrice = 0;
-                            totalPrice-=10.0;
+                            totalPrice -= 10.0;
+                            fialPrizza -= 10;
                             log('message ${pizzaPrice}');
                           }
                         });
@@ -161,10 +171,12 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                         setState(() {
                           if (newValue!) {
                             pizzaPrice2 = 20.0;
-                            totalPrice+=20.0;
+                            totalPrice += 20.0;
+                            fialPrizza += 20.0;
                           } else {
-                            totalPrice-=20.0;
+                            totalPrice -= 20.0;
                             pizzaPrice2 = 0;
+                            fialPrizza -= 20.0;
                           }
                         });
                       },
@@ -190,10 +202,14 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                         setState(() {
                           if (newValue!) {
                             pizzaPrice3 = 20.0;
-                            totalPrice+=20.0;
+                            fialPrizza += 20.0;
+
+                            totalPrice += 20.0;
                           } else {
                             pizzaPrice3 = 0;
-                            totalPrice-=20.0;
+                            fialPrizza -= 20.0;
+
+                            totalPrice -= 20.0;
                           }
                         });
                       },
@@ -211,7 +227,7 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                     child: Text(
                       'اختر اضافات البيتزا:',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     )),
               ),
               Padding(
@@ -234,10 +250,12 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                         setState(() {
                           if (newValue!) {
                             pizzaPrice4 = 2.0;
-                            totalPrice+=2.0;
+                            totalPrice += 2.0;
+                            fialPrizza += 2.0;
                           } else {
                             pizzaPrice4 = 0;
-                            totalPrice-=2.0;
+                            totalPrice -= 2.0;
+                            fialPrizza -= 2.0;
                           }
                         });
                       },
@@ -263,9 +281,12 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                         setState(() {
                           if (newValue!) {
                             pizzaPrice5 = 3.0;
-                            totalPrice+=3.0;
+                            totalPrice += 3.0;
+                            fialPrizza += 3.0;
                           } else {
-                            totalPrice-=3.0;
+                            totalPrice -= 3.0;
+                            fialPrizza -= 3.0;
+
                             pizzaPrice5 = 0;
                           }
                         });
@@ -292,10 +313,12 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
                         setState(() {
                           if (newValue!) {
                             pizzaPrice6 = 2.0;
-                            totalPrice+=2.0;
+                            totalPrice += 2.0;
+                            fialPrizza += 2.0;
                           } else {
-                            totalPrice-=2.0;
+                            totalPrice -= 2.0;
                             pizzaPrice6 = 0;
+                            fialPrizza -= 2.0;
                           }
                         });
                       },
@@ -328,7 +351,7 @@ class _PizzaOrderScreenState extends State<PizzaOrderScreen> {
               onPressed: () {},
               child: Row(
                 children: [
-                  Text(' ${totalPrice.toStringAsFixed(2)}'),
+                  Text(' ${fialPrizza.toStringAsFixed(2)}'),
                   Spacer(),
                   Align(
                       alignment: Alignment.centerRight,
